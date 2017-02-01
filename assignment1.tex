@@ -9,6 +9,9 @@
 \author[Pat Shaffer Akshada More DongInn Kim John Stein]{Pat Shaffer Akshada More DongInn Kim John Stein}
 \publisher{Indiana University\smallcaps{   submitted: Feb 10, 2017}}
 
+% DongInn Kim adds a test comment here to see if it is synced to sharelatex
+%
+
 %%
 % If they're installed, use Bergamo and Chantilly from www.fontsite.com.
 % They're clones of Bembo and Gill Sans, respectively.
@@ -228,7 +231,7 @@ The system modeled is a web-enabled password manager that resides on a tamper re
 
 The offline portion of the password manager consists of the USB drive and a host machine running Windows, Mac or Linux operating systems. The USB drive contains an encrypted partition and an encrypted partition.  The encrypted partition is formed on USB initialization and uses a unique random key inside of the USB to generate a second random key which is used to create the encrypted partition. These two keys are embedded in the hardware and never shared with the host OS.
 \par Once the USB drive is inserted into the host computer, a program is executed from the unencrypted partition which mounts the USB to the host OS.  Following mounting, a small program from the encrypted partition is executed which prompts the user for a password. After a preset number of failed password attempts, the USB device will wipe all keys and execute additional functions to render the USB device useless and unrecoverable.\sidenote{\pat{the sidenote command can be used to highlight a finding or concept}}
-\par Web password functions are optionally enabled and use the USB drive as the seed key to set up secure connections to a server which will host the user passwords.  The server has no access to the USB keys (they are written to either flash or silicon) but instead sets up a separate password environment which allows segregation of passwords and keys, allowing a user to choose where to store passwords and keys. 
+\par Web password functions are optionally enabled and use the USB drive as the seed key to set up secure connections to a server which will host the user passwords.  The server has no access to the USB keys (they are written to either flash or silicon) but instead sets up a separate password environment which allows segregation of passwords and keys, allowing a user to choose where to store passwords and keys.
 
 \begin{figure}[h]
     \centering
@@ -251,7 +254,7 @@ Following the example in Shostack~\cite{shostackbook}, we describe the security 
 \cleardoublepage
 \chapter{Threat Model}
 \label{ch:threatmodel}
-This chapter is the meat of the assignment.  We take the 
+This chapter is the meat of the assignment.  We take the
 
 
 \section{Adversary}
@@ -305,4 +308,3 @@ Here we place the definitions of our risk to include definitions of each type of
 \bibliographystyle{plainnat}
 
 \end{document}
-
