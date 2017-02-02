@@ -179,7 +179,6 @@ Building secure systems is hard.
 
 
 
-
 % r.5 contents
 \cleardoublepage
 \tableofcontents
@@ -193,103 +192,20 @@ Building secure systems is hard.
 
 % r.9 introduction
 \cleardoublepage
-\chapter*{Introduction}
-
-This report satisfies the requirements of assignment 1\cite{2017myersa1handout}, which requires us to perform a \textit{comprehensive} threat model a password manager.  We are allowed discretion in the choice of architectures but the architecture should provide for the remembering of many passwords for websites, products, appliances and other uses which require passwords.
-\par The report is limited to no more than 7 pages of diagrams and 40 pages total length.  The final product is a threat model of the system and any other documentation that would be necessary to understand how the proposed system would run.  If any sections of the threat model are empty, they should still be included in the report and the report should indicate
-that they were intentionally left empty.
-
-%%
-% Start the main matter (normal chapters)
-\mainmatter
+\input{text/introduction.tex}
 
 \cleardoublepage
-\chapter{System Overview}
-\label{ch:System Overview}
-The system modeled is a web-enabled password manager that resides on a tamper resistant USB thumb drive, modelled after the IronKey\texttrademark secure USB thumb drive. The password manager allows for a user to enjoy the benefits of a secure offline password manager with the option of storing information to the cloud.  Additionally, the benefits of a embedded crypto system provide robustness to the user.  The device firmware can be updated via an internet connection.
-
-\begin{marginfigure}%
-\centering
-  \includegraphics[width=0.25\linewidth]{s1000-vertical}
-  \caption{Picture of the IronKey USB drive.  More information can be found at \url{www.ironkey.com}}
-  \label{fig:ik}
-\end{marginfigure}
-
-
-
-\section{System Description}
-\label{sec:sysdesc}
-
-\pat{this is a comment by pat}\\
-\donginn{this is a comment by DongInn}\\
-\john{this is a comment by John}\\
-\akshada{this is a comment by Akshada}\\
-
-
-The offline portion of the password manager consists of the USB drive and a host machine running Windows, Mac or Linux operating systems. The USB drive contains an encrypted partition and an encrypted partition.  The encrypted partition is formed on USB initialization and uses a unique random key inside of the USB to generate a second random key which is used to create the encrypted partition. These two keys are embedded in the hardware and never shared with the host OS.
-\par Once the USB drive is inserted into the host computer, a program is executed from the unencrypted partition which mounts the USB to the host OS.  Following mounting, a small program from the encrypted partition is executed which prompts the user for a password. After a preset number of failed password attempts, the USB device will wipe all keys and execute additional functions to render the USB device useless and unrecoverable.\sidenote{\pat{the sidenote command can be used to highlight a finding or concept}}
-\par Web password functions are optionally enabled and use the USB drive as the seed key to set up secure connections to a server which will host the user passwords.  The server has no access to the USB keys (they are written to either flash or silicon) but instead sets up a separate password environment which allows segregation of passwords and keys, allowing a user to choose where to store passwords and keys.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\linewidth]{State_Diagram}
-    \caption{Password Manager State Diagram for Offline Usage}
-    \label{fig:state_diagram}
-\end{figure}
-
-\section{Functional Requirements}
-\label{sec:funcreq}
-Describe the functions of the system.  In here place swim lane diagrams corresponding to each major functional block details in \ref{sec:sysdesc}
-
-\section{Security Requirements}
-\label{sec:secreqs}
-Following the example in Shostack~\cite{shostackbook}, we describe the security requirements of the system which will inform our threat model.
-
-
-
+\input{text/system_overview.tex}
 
 \cleardoublepage
-\chapter{Threat Model}
-\label{ch:threatmodel}
-This chapter is the meat of the assignment.  We take the
-
-
-\section{Adversary}
-\label{sec:adversary}
-
-\section{Assumptions}
-\label{sec:assumptions}
-
-\section{Threats}
-\label{sec:threats}
-In this section we identify the threat to each major element of our system, usually by using a dataflow diagram.  Use the subsections to enumerate and systematically walk through the threats.
-\subsection{Threat Trees}
-We conduct an analysis of each threat using a threat tree.
-
-\subsection{STRIDE Modeling}
-We conduct a STRIDE analysis on each major data flow or component.  The style does not allow for subsections so we may need to be a little creative and just use para
+\input{text/threat_model.tex}
 
 \cleardoublepage
-\chapter{Mitigations}
-\label{ch:mitigations}
-In this chapter we describe the mitigations to the threats we found in the previous chapter.
-
-\section{Risk and Prioritization}
-\label{sec:risk}
-Here we describe the risk management methods for our mitigations. I suggest we consider a likelihood and impact methodology and deliberately break out categorical threats and use a BUGBAR such as deploy with no CAT1 findings.
-\marginnote{The style I am using puts notes in the margin to emphasize particular elements in a chapter or section.  In this case I would emphasize what a CATEGORY 1 finding is and refer the reader to an appendix for definition}
-
-\subsection{Risk Definitions}
-Here we place the definitions of our risk to include definitions of each type of likelihood and severity.  We then describe the risks using the definitions of major category such as CAT-1.  We might be able to utilize the DOD DIACAP\footnote{The DIACAP process can be found at \url{www.prim.osd.mil/Documents/diacap_workflow_map.pdf}} severity codes.  (Although I hate DIACAP personally)
-
-\newpage
-\input{text/build_system.tex}
-\newpage
+\input{text/mitigations.tex}
 
 \cleardoublepage
 \chapter{Appendix 1: Security Exceptions}
 \label{ch:a1}
-
 
 \cleardoublepage
 \chapter{Appendix 2: Security Bug List}
