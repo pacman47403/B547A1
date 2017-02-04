@@ -4,11 +4,20 @@ Manifest.txt
 README.txt
 assignment1.tex
 bibliography.bib
+excel table
+excel table/tables.xlsx
 graphics
-graphics/DFD.png
 graphics/DFD.xml
+graphics/DFD_App.png
+graphics/DFD_Main.png
+graphics/DFD_USB.png
 graphics/State_Diagram.png
+graphics/assumption_table_2017-02-03_14-13-43.png
+graphics/bug_table_2017-02-03_14-12-11.png
+graphics/risk_matrix_2017-02-03_15-23-28.png
+graphics/risk_table_2017-02-03_14-11-08.png
 graphics/s1000-vertical.png
+graphics/threat_table_2017-02-03_14-12-51.png
 text
 text/introduction.tex
 text/mitigation.tex
