@@ -5,7 +5,7 @@
 #
 
 HEADER = assignment1
-PICS = images
+PICS = graphics
 #BIB = bib
 TEX = text
 NEW_CITES = yis
