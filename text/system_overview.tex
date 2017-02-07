@@ -76,7 +76,27 @@ perferably in an image format.
     \label{fig:dfd_usb}
 \end{figure}
 
+The major components of the Password manager are:\\  USB device and User Application.
+
+The usb device when pluged in the system is loaded as a CD ROM. The Get/Load function from the application gets the public key and begins the message encryption. Once the user application is authenticated and loaded there can be 4 possibilities:
+\\ 1. The password manager is used for the first time by the user
+\\ 2. Correct credentials are entered by the user
+\\ 3. Incorrect credentials are entered by the user
+\\ 4. User enters incorrect credentials multiple times
+
+When the user uses the iron key for the first time, the header is decrypted with the default key. Once the header decrypt is successful the user is forced to reset the default password.
+
+When a correct credentials are entered by the user, the password key is sent to the usb which then decrypts the header with that key.
+Once the header is decrypted a a user session is started. The counter which stores the number of invalid attempts is reset.The user has the option to update the user password. The decrypted file is read into the memory and a new password key and password file/header is written to the usb.A pair of key and password is stored in the usb device. The password is queried from the USB device using the given key.
+
+When the user enters an invalid credentials, the header decrypt fails and the counter is incremented. The user is then prompted to enter a correct password. 
+
+When a user enters a wrong password multiple times which is equal to some threshold value, the reset counter overwrites the header and password file by default.
+
+The user application can be updated. When the update is successful, the USB is updated and a force restart happens with the new version.When an update fails the current version of the app is maintained.
+
 The system data flow diagram is shown in figure \ref{fig:dfd_main}
+
 
 \section{Functional Requirements}
 \label{sec:funcreq}
