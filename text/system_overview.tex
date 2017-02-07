@@ -45,27 +45,38 @@ render the USB device useless and unrecoverable.
 channel which accesses a webserver to download the device files to the USB
 device.  Following download, the device authenticates the downloaded files and
 updates the device.
+The way to save the password via the password manager is straightforward. The
+password is passed along with the corresponding key (e.g. a website, a username,
+hostname, \dots) to the password manager when the secure user session is
+setup as shown in Figure~\ref{fig:dfd_app} and Figure~\ref{fig:dfd_usb}. The key
+must be unique. Once
+the password is stored with the corresponding key to the encrypted partition in
+the USB, a user can retrieve the password with the unique given key during the
+secure user session. The retrieved password can be blinded out and copied to the
+temporary memory of the system (e.g. clipboard) for users' convenience. Of
+course, if a user inquires, the password can be displayed in a plain text but
+perferably in an image format.
 
-\begin{marginfigure}
+\begin{figure}
     \centering
     \includegraphics{DFD_Main}
     \caption{Main System Data Flow Diagram}
-    \label{fig:dfd}
-\end{marginfigure}
-\begin{marginfigure}
-    \centering
-    \includegraphics{DFD_USB}
-    \caption{System Data Flow Diagram in the USB side}
-    \label{fig:dfd}
-\end{marginfigure}
-\begin{marginfigure}
+    \label{fig:dfd_main}
+\end{figure}
+\begin{figure}
     \centering
     \includegraphics{DFD_App}
     \caption{System Data Flow Diagram in the App side}
-    \label{fig:dfd}
-\end{marginfigure}
+    \label{fig:dfd_app}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{DFD_USB}
+    \caption{System Data Flow Diagram in the USB side}
+    \label{fig:dfd_usb}
+\end{figure}
 
-The system data flow diagram is shown in figure \ref{fig:dfd}
+The system data flow diagram is shown in figure \ref{fig:dfd_main}
 
 \section{Functional Requirements}
 \label{sec:funcreq}
