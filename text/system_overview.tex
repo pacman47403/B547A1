@@ -1,11 +1,11 @@
 \chapter{System Overview}
 \label{ch:System Overview}
 The system modeled is a web-enabled password manager that resides on a
-tamper resistant USB thumb drive, modelled after the
+tamper resistant USB thumb drive, modeled after the
 IronKey\texttrademark secure USB thumb drive. The password manager
 allows for a user to enjoy the benefits of a secure offline password
 manager with the option of storing information to the cloud.
-Additionally, the benefits of a embedded crypto system provide
+Additionally, the benefits of an embedded crypto system provide
 robustness to the user.  The device firmware can be updated via an
 internet connection.
 
@@ -22,42 +22,81 @@ found at \url{www.ironkey.com}}
 \section{System Description}
 \label{sec:sysdesc}
 
-The password manager consists of the USB drive, a webserver for software and firmware updates and an embedded password manager app.  The password manager is accessed through the USB drive which must first be unlocked via a host machine running Windows, Mac or Linux operating
-systems. The USB drive contains an encrypted partition and an
-encrypted partition.  The encrypted partition is formed on USB
-initialization and uses a unique random key inside of the USB to
+The password manager consists of the USB drive, a webserver for software and
+firmware updates and an embedded password manager app.  The password manager is
+accessed through the USB drive which must first be unlocked via a host machine
+running Windows, Mac or Linux operating systems. The USB drive contains an
+encrypted partition and an encrypted partition.  The encrypted partition is
+formed on USB initialization and uses a unique random key inside of the USB to
 generate a second random key which is used to create the encrypted
-partition. These two keys are embedded in the hardware and never
-shared with the host OS.\sidenote{The device unique identifier and private key are contained within the silicon of the device and can only be accesed through an authenticated secure session application hosted on the USB drive.}  The USB also provides cryptographic functions via a cryptochip inside the USB.  The USB also provides a unique identifier which is contained within its embedded circuitry.
-\par Once the USB drive is inserted into the host computer, a program
-is executed from the unencrypted partition which mounts the USB to the
-host OS.  Following mounting, a small program from the encrypted
-partition is executed which prompts the user for a password. After a
-preset number of failed password attempts, the USB device will wipe
-all keys and execute additional functions to render the USB device
-useless and unrecoverable.
-\par The USB device firmware and software can be updated via a secure Internet channel which accesses a webserver to download the device files to the USB device.  Following download, the device authenticates the downloaded files and updates the device.
+partition. These two keys are embedded in the hardware and never shared with the
+host OS.\sidenote{The device unique identifier and private key are contained
+within the silicon of the device and can only be accesed through an
+authenticated secure session application hosted on the USB drive.}  The USB also
+provides cryptographic functions via a cryptochip inside the USB.  The USB also
+provides a unique identifier which is contained within its embedded circuitry.
+\par Once the USB drive is inserted into the host computer, a program is
+executed from the unencrypted partition which mounts the USB to the host OS.
+Following mounting, a small program from the encrypted partition is executed
+which prompts the user for a password. After a preset number of failed password
+attempts, the USB device will wipe all keys and execute additional functions to
+render the USB device useless and unrecoverable.
+\par The USB device firmware and software can be updated via a secure Internet
+channel which accesses a webserver to download the device files to the USB
+device.  Following download, the device authenticates the downloaded files and
+updates the device.
+The way to save the password via the password manager is straightforward. The
+password is passed along with the corresponding key (e.g. a website, a username,
+hostname, \dots) to the password manager when the secure user session is
+setup as shown in Figure~\ref{fig:dfd_app} and Figure~\ref{fig:dfd_usb}. The key
+must be unique. Once
+the password is stored with the corresponding key to the encrypted partition in
+the USB, a user can retrieve the password with the unique given key during the
+secure user session. The retrieved password can be blinded out and copied to the
+temporary memory of the system (e.g. clipboard) for users' convenience. Of
+course, if a user inquires, the password can be displayed in a plain text but
+perferably in an image format.
 
 \begin{figure}
     \centering
     \includegraphics{DFD_Main}
     \caption{Main System Data Flow Diagram}
-    \label{fig:dfd}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics{DFD_USB}
-    \caption{System Data Flow Diagram in the USB side}
-    \label{fig:dfd}
+    \label{fig:dfd_main}
 \end{figure}
 \begin{figure}
     \centering
     \includegraphics{DFD_App}
     \caption{System Data Flow Diagram in the App side}
-    \label{fig:dfd}
+    \label{fig:dfd_app}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{DFD_USB}
+    \caption{System Data Flow Diagram in the USB side}
+    \label{fig:dfd_usb}
 \end{figure}
 
-The system data flow diagram is shown in figure \ref{fig:dfd}
+The major components of the Password manager are:\\  USB device and User Application.
+
+The usb device when pluged in the system is loaded as a CD ROM. The Get/Load function from the application gets the public key and begins the message encryption. Once the user application is authenticated and loaded there can be 4 possibilities:
+\\ 1. The password manager is used for the first time by the user
+\\ 2. Correct credentials are entered by the user
+\\ 3. Incorrect credentials are entered by the user
+\\ 4. User enters incorrect credentials multiple times
+
+When the user uses the iron key for the first time, the header is decrypted with the default key. Once the header decrypt is successful the user is forced to reset the default password.
+
+When a correct credentials are entered by the user, the password key is sent to the usb which then decrypts the header with that key.
+Once the header is decrypted a a user session is started. The counter which stores the number of invalid attempts is reset.The user has the option to update the user password. The decrypted file is read into the memory and a new password key and password file/header is written to the usb.A pair of key and password is stored in the usb device. The password is queried from the USB device using the given key.
+
+When the user enters an invalid credentials, the header decrypt fails and the counter is incremented. The user is then prompted to enter a correct password. 
+
+When a user enters a wrong password multiple times which is equal to some threshold value, the reset counter overwrites the header and password file by default.
+
+The user application can be updated. When the update is successful, the USB is updated and a force restart happens with the new version.When an update fails the current version of the app is maintained.
+
+The system data flow diagram is shown in figure \ref{fig:dfd_main}
+
 
 \section{Functional Requirements}
 \label{sec:funcreq}

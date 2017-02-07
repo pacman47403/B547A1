@@ -57,4 +57,4 @@ clean:
 		\( -name '*.idx' -print \) -or \( -name '*.soc' -print \) -or \
 		\( -name '*.toc' -print \) | xargs rm -f; \
 	rm -f $(HEADER).dvi $(HEADER).log $(HEADER).ps $(HEADER).pdf $(HEADER).out \
-		_region_* TAGS $(PICS)/*
+		_region_* TAGS 
