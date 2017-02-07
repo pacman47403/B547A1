@@ -22,21 +22,29 @@ found at \url{www.ironkey.com}}
 \section{System Description}
 \label{sec:sysdesc}
 
-The password manager consists of the USB drive, a webserver for software and firmware updates and an embedded password manager app.  The password manager is accessed through the USB drive which must first be unlocked via a host machine running Windows, Mac or Linux operating
-systems. The USB drive contains an encrypted partition and an
-encrypted partition.  The encrypted partition is formed on USB
-initialization and uses a unique random key inside of the USB to
+The password manager consists of the USB drive, a webserver for software and
+firmware updates and an embedded password manager app.  The password manager is
+accessed through the USB drive which must first be unlocked via a host machine
+running Windows, Mac or Linux operating systems. The USB drive contains an
+encrypted partition and an encrypted partition.  The encrypted partition is
+formed on USB initialization and uses a unique random key inside of the USB to
 generate a second random key which is used to create the encrypted
-partition. These two keys are embedded in the hardware and never
-shared with the host OS.\sidenote{The device unique identifier and private key are contained within the silicon of the device and can only be accesed through an authenticated secure session application hosted on the USB drive.}  The USB also provides cryptographic functions via a cryptochip inside the USB.  The USB also provides a unique identifier which is contained within its embedded circuitry.
-\par Once the USB drive is inserted into the host computer, a program
-is executed from the unencrypted partition which mounts the USB to the
-host OS.  Following mounting, a small program from the encrypted
-partition is executed which prompts the user for a password. After a
-preset number of failed password attempts, the USB device will wipe
-all keys and execute additional functions to render the USB device
-useless and unrecoverable.
-\par The USB device firmware and software can be updated via a secure Internet channel which accesses a webserver to download the device files to the USB device.  Following download, the device authenticates the downloaded files and updates the device.
+partition. These two keys are embedded in the hardware and never shared with the
+host OS.\sidenote{The device unique identifier and private key are contained
+within the silicon of the device and can only be accesed through an
+authenticated secure session application hosted on the USB drive.}  The USB also
+provides cryptographic functions via a cryptochip inside the USB.  The USB also
+provides a unique identifier which is contained within its embedded circuitry.
+\par Once the USB drive is inserted into the host computer, a program is
+executed from the unencrypted partition which mounts the USB to the host OS.
+Following mounting, a small program from the encrypted partition is executed
+which prompts the user for a password. After a preset number of failed password
+attempts, the USB device will wipe all keys and execute additional functions to
+render the USB device useless and unrecoverable.
+\par The USB device firmware and software can be updated via a secure Internet
+channel which accesses a webserver to download the device files to the USB
+device.  Following download, the device authenticates the downloaded files and
+updates the device.
 
 \begin{marginfigure}
     \centering
