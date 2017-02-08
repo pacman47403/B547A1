@@ -1,6 +1,14 @@
 \chapter{Threat Model}
 \label{ch:threatmodel}
-In this chapter we detail our threat modelling approach, document our iterative process which iterates the threats, identifies mitigations and manages risk.
+In this chapter we detail our threat modelling approach, document our iterative process which iterates the threats, identifies mitigations and manages risk.  Our threat model is an iterative model.  Our approach is as follows:
+\begin{enumerate}
+    \item{Individually review system architecture and dataflows and identify any potential threats using the STRIDE methodoly augmented by the elevation of privilege game cards shown in figure~\ref{fig:spoofcard} through figure~\ref{fig:eopcard}.}
+    \item{As a group, discuss any identified threats and gain concurrence and understanding on the threat.}
+    \item{Assign a bug number to the threat.}
+    \item{Decide whether or not to accept this threat as a system risk.  Note this step is intended to \emph{group} like threats and to allow for a more detailed assessment of the risk presented by the threat to allow for better triage of threats given limited time and budgets.}
+    \item{Perform a threat risk likelihood vs impact for all accepted risks using a \emph{modified} OWASP risk methodology.}
+    \item{Review mitigations and if necessary iterate on high risk threats.}
+\end{enumerate}
 
 
 \section{Adversary}
@@ -34,7 +42,23 @@ In this section we identify the threat to each major element of our
 system, usually by using a dataflow diagram.  We conduct a STRIDE analysis on each major data flow or component using the Microsoft Elevation of Privilege game and personal inspection.\sidenote{The elevation of privilege game can be found at \url{https://www.microsoft.com/en-us/SDL/adopt/eop.aspx}}  For each threat we decide whether or not to add it to our risk chart; for similar threats or threats that depend on a similar attack tree we enter only one threat into the risk table but track the remaining threats in the bug table to ensure they are properly managed and mitigated. As we iterated threats, we noted several limitations of the OWASP Risk Management Methodology:
 \begin{enumerate}
     \item{The OWASP model places considerable emphasis on non-repudiation.  For our analysis, many of the threats can be realized by simple possession of the USB device which does not require logging of any sort.  Following the risk methodology model without any modification will yield the highest assessment (likelihood) for detectability. In the future we would consider amending the rubric for this particular likelihood factor.}
+    \begin{marginfigure}%
+    \centering
+    \includegraphics[width=0.4\linewidth]{tampercard}
+    \caption{Tamper Card from the Elevation of Privilege Game}
+    \label{fig:tampercardcard}
+    \end{marginfigure}
+
+    
     \item{The technical impact categories and rubrics were very helpful, however since many of these attacks were aimed at obtaining the USB password, they rated artificially high because the cascade of compromise that resulted in obtaining a password. The rubric for either technical impact or likelihood did not allow for consideration of existing countermeasures or design features in the device.  Again, this resulted in artificially high risk assessments.  For a second iteration, we would recommend including an assessment of design features and countermeasures intended to address the threat or related threat as a better way to better estimate the likelihood of a risk.}
+    
+    \begin{marginfigure}%
+    \centering
+    \includegraphics[width=0.4\linewidth]{repudcard}
+    \caption{Repudiation Card from the Elevation of Privilege Game}
+    \label{fig:repudcard}
+    \end{marginfigure}
+    
     \item{The business impact categories while useful in a real world exercise were not applicable to this threat model.  In the future we would look at substituting more applicable rubrics in place of the existing business impact factors of the OWASP model.}
 \end{enumerate}
 
@@ -50,20 +74,6 @@ We identified 5 threats and adjudicated them. Each threat received a bug id whet
 
 \subsection{Tampering Threats}
 
-\begin{marginfigure}%
-\centering
-  \includegraphics[width=0.4\linewidth]{tampercard}
-  \caption{Tamper Card from the Elevation of Privilege Game}
-  \label{fig:tampercardcard}
-\end{marginfigure}
-
-\begin{marginfigure}%
-\centering
-  \includegraphics[width=0.4\linewidth]{repudcard}
-  \caption{Repudiation Card from the Elevation of Privilege Game}
-  \label{fig:repudcard}
-\end{marginfigure}
-
 We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need to update these summaries after our threat modeling is complete} Threat ID 004, ``Malware Infested Update'' is a significant threat and represents a category of several different threats which are intended to compromise the USB device by delivering malware which can alter the reset counter, keys, and data within the USB device. \pat{should we do an attack tree for this and associated threats?} Our tampering threats and potential mitigations are depicted in table~\ref{tab:tampersum}.
 
 \begin{table*}[]
@@ -72,6 +82,13 @@ We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need
     \caption{Summary of Tampering Threats Found in First Threat Iteration}
     \label{tab:tampersum}
 \end{table*}
+
+\begin{marginfigure}[0.25in]%
+\centering
+  \includegraphics[width=0.4\linewidth]{infodisclcard}
+  \caption{Information Disclosure Card from the Elevation of Privilege Game}
+  \label{fig:spoofcard}
+\end{marginfigure}
 
 \subsection{Repudiation Threats}
 
@@ -95,13 +112,6 @@ We discovered several information disclosure threats during our analysis.  Many 
     \caption{Summary of Information Disclosure Threats Found in First Threat Iteration}
     \label{tab:infosum}
 \end{table*}
-
-\begin{marginfigure}[0.25in]%
-\centering
-  \includegraphics[width=0.4\linewidth]{infodisclcard}
-  \caption{Information Disclosure Card from the Elevation of Privilege Game}
-  \label{fig:spoofcard}
-\end{marginfigure}
 
 
 \subsection{Denial Of Service Threats}
