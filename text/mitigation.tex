@@ -7,19 +7,15 @@ the previous chapter.
 
 \section{Risk and Prioritization}
 \label{sec:risk}
-Here we describe the risk management methods for our mitigations. I
-suggest we consider a likelihood and impact methodology and
-deliberately break out categorical threats and use a BUGBAR such as
-deploy with no CAT1 findings.
-\marginnote{The style I am using puts notes in the margin to emphasize
-particular elements in a chapter or section.  In this case I would
-emphasize what a CATEGORY 1 finding is and refer the reader to an
-appendix for definition}
+While it is beyond the scope of this assignment to describe any technical or business processes used to manage risk, we implicitly manage risk through our assumptions and mitigations.  For example, the risk from the threat of loss of the USB (resulting in a denial of service) is transferred to the owner of the device by assuming that the owner will take adequate precautions to prevent loss or theft of the device.  For the unlikely lucky guess threat, the risk is accepted because the likelihood of properly guessing a complex password in a very small, fixed number of tries is unlikely.
 
-\subsection{Risk Definitions}
-Here we place the definitions of our risk to include definitions of
-each type of likelihood and severity.  We then describe the risks
-using the definitions of major category such as CAT-1.  We might be
-able to utilize the DOD DIACAP\footnote{The DIACAP process can be
-found at \url{www.prim.osd.mil/Documents/diacap_workflow_map.pdf}}
-severity codes.  (Although I hate DIACAP personally)
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{riskcats}
+    \caption{Risk Categories Used in Threat Modeling}
+    \label{fig:riskcats}
+\end{marginfigure}
+
+
+\subsection{Risk Determination}
+We

@@ -13,7 +13,7 @@ In this chapter we detail our threat modelling approach, document our iterative 
 
 \section{Adversary}
 \label{sec:adversary}
-In order to make secure systems, we must always consider the system design and threat given a specified adversary.  For our system, our adversary is a moderate capability Blackhat hacker who seeks to compromise our password system for financial gain.
+In order to make secure systems, we must always consider the system design and threat given a specified adversary.  For our system, our adversary is a moderate capability Blackhat hacker who seeks to compromise our password system for financial gain.  
 
 \section{Assumptions}
 \label{sec:assumptions}
@@ -49,16 +49,16 @@ system, usually by using a dataflow diagram.  We conduct a STRIDE analysis on ea
     \label{fig:tampercardcard}
     \end{marginfigure}
 
-
+    
     \item{The technical impact categories and rubrics were very helpful, however since many of these attacks were aimed at obtaining the USB password, they rated artificially high because the cascade of compromise that resulted in obtaining a password. The rubric for either technical impact or likelihood did not allow for consideration of existing countermeasures or design features in the device.  Again, this resulted in artificially high risk assessments.  For a second iteration, we would recommend including an assessment of design features and countermeasures intended to address the threat or related threat as a better way to better estimate the likelihood of a risk.}
-
+    
     \begin{marginfigure}%
     \centering
     \includegraphics[width=0.4\linewidth]{repudcard}
     \caption{Repudiation Card from the Elevation of Privilege Game}
     \label{fig:repudcard}
     \end{marginfigure}
-
+    
     \item{The business impact categories while useful in a real world exercise were not applicable to this threat model.  In the future we would look at substituting more applicable rubrics in place of the existing business impact factors of the OWASP model.}
 \end{enumerate}
 
@@ -104,7 +104,7 @@ We identified 14 potential repudiation threats. \pat{update number after final i
 
 
 \subsection{Information Disclosure Threats}
-We discovered several information disclosure threats during our analysis.  Many of these threats where aimed at discovering passwords and keys while one particular threat was aimed at fuzzing the USB to discover any potential leaks caused by incorrect input.  A particular nefarious information disclosure threat was focused on recovering keys from a wiped device that had been transferred to another user. \pat{we need to say a little more about info threats?}
+We discovered several information disclosure threats during our analysis.  Many of these threats where aimed at discovering passwords and keys while one particular threat was aimed at fuzzing the USB to discover any potential leaks caused by incorrect input.  A particular nefarious information disclosure threat was focused on recovering keys from a wiped device that had been transferred to another user. \pat{we need to say a little more about info threats?} 
 
 \begin{table*}[]
     \centering
@@ -115,7 +115,7 @@ We discovered several information disclosure threats during our analysis.  Many 
 
 
 \subsection{Denial Of Service Threats}
-Denial of service for our password manager occurs when either the device is cleared or no longer in the posession of its owner.  Loss of the USB device represents a considerable denial of service threat because no backup features are provisioned.
+Denial of service for our password manager occurs when either the device is cleared or no longer in the posession of its owner.  Loss of the USB device represents a considerable denial of service threat because no backup features are provisioned. 
 \begin{table*}[ht]
     \centering
     \includegraphics[width=\linewidth]{dos_sum}
@@ -156,3 +156,7 @@ Loss of control of the USB which results in an attacker possessing the device ma
 We conduct an analysis of each threat using a threat tree.
 
 \section{Highest Risks and Their Mitigaitons}
+
+
+
+
