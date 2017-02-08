@@ -45,15 +45,25 @@ Spoofing threats deal with an attacker's ability to masquerade as an individual,
     \caption{Summary of Spoofing Threats Found in First Threat Iteration}
     \label{tab:spoofsum}
 \end{table*}
-We identified 5 threats and adjudicated them. Each threat received a bug id whether or not they were entered into the risk tables.  Threats that were similar to other evaluated threats were not accepted into the risk table as noted. Several spoofing threats were elements in a multi-type threat such as spoofing resulting in information disclosure. When possible, we identified potential mitigations for each threat whih inform the bug list which is where the majority of system development is drawn.
+We identified 5 threats and adjudicated them. Each threat received a bug id whether or not they were entered into the risk tables.  Threats that were similar to other evaluated threats were not accepted into the risk table as noted. Several spoofing threats were elements in a multi-type threat such as spoofing resulting in information disclosure. When possible, we identified potential mitigations for each threat which informs the bug list which is where the majority of system development is drawn.
 
 \subsection{Tampering Threats}
+
 \begin{marginfigure}%
 \centering
   \includegraphics[width=0.4\linewidth]{tampercard}
   \caption{Tamper Card from the Elevation of Privilege Game}
   \label{fig:tampercardcard}
 \end{marginfigure}
+
+We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need to update these summaries after our threat modeling is complete} Threat ID 004, ``Malware Infested Update'' is a significant threat and represents a category of several different threats which are intended to compromise the USB device by delivering malware which can alter the reset counter, keys, and data within the USB device. \pat{should we do an attack tree for this and associated threats?} Our tampering threats and potential mitigations are depicted in table~\ref{tab:tampersum}.
+
+\begin{table*}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{tamper_sum}
+    \caption{Summary of Tampering Threats Found in First Threat Iteration}
+    \label{tab:tampersum}
+\end{table*}
 
 \subsection{Repudiation Threats}
 \begin{marginfigure}%
