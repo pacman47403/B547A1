@@ -1,0 +1,48 @@
+
+The risk methodology used in this assignment is taken from the OWASP Risk
+Methodology~\cite{owasprisk} with modifications to the risk matrix.\sidenote[4.5cm]{OWASP uses a 3x3 table whereas we use a 5x5 table for better granularity.}
+
+
+
+
+
+Risk categories are defined in Table ~\ref{tab:risk_cat}.\\
+
+
+Each accepted threat is given a likelihood score which is based on threat agent and vulnerability factors as well as an impact score which is based on technical impact and business impact.  These two scores are used to enter the risk matrix in figure~\ref{fig:riskmatrix} which will yield a risk category.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l l l }
+    \hline
+    Risk Category & Definition \\
+    \hline
+    1 & Critical\\
+    2 & High\\
+    3 & Med-High\\
+    4 & Med\\
+    5 & Med-Low\\
+    6 & Low \\
+    \end{tabular}
+    \caption{Risk Category Definitions}
+    \label{tab:risk_cat}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{risk_matrix_2017-02-03_15-23-28.png}
+    \caption{Risk Matrix\emph{ with 6 risk ratings}}
+    \label{fig:riskmatrix}
+\end{figure}
+
+By convention, category 1 or 2 risks require immediate attention and management
+while category 5 and 6 risks can most likely be monitored.The password manager's risk are summarized using the table in table~\ref{tab:risk}.
+
+
+\begin{sidewaystable}[]
+    \includegraphics[]{risk_table_2017-02-03_14-11-08.png}
+    \caption{Password Manager Risk Table}
+    \label{tab:risk}
+\end{sidewaystable}
+
+

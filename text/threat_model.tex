@@ -1,23 +1,43 @@
 \chapter{Threat Model}
 \label{ch:threatmodel}
-This chapter is the meat of the assignment.  We take the
+In this chapter we detail our threat modelling approach, document our iterative process which iterates the threats, identifies mitigations and manages risk.
 
 
 \section{Adversary}
 \label{sec:adversary}
+In order to make secure systems, we must always consider the system design and threat given a specified adversary.  For our system, our adversary is a moderate capability Blackhat hacker who seeks to compromise our password system for financial gain.  
 
 \section{Assumptions}
 \label{sec:assumptions}
+As part of our threat model, we identified several security assumptions which are documented in appendix 1.  Several assumptions demand deeper discussion.
+\begin{enumerate}
+    \item{\emph{The OS is secure.} While this may seems trivial to note this assumption, a fundamental premise of the password manager design is that the OS functions leveraged by the device such as USB load and clipboard have not been compromised.  If these key OS functions are compromised then any data in transit will be vulnerable to disclosure.  We minimize our attack surface by using volatile memory only and using the USB as our sole source of cryptographic functionality to the maximum extent possible.}
+    \item{\emph{The user will physically protect the device.} In our scenario analysis, permanent denial of service will result from loss of the device.  Since we do not provide any backup (in order to minimize the attack surface), it is the user's responsibility to have a disaster plan in case of physical loss.  We are quite confident that passwords will not be compromised in the event of a loss, but a loss also means that a user will no longer have access to the password store.}
+    \item{\emph{Our adversary is looking for financial gain.} Additionally, our adversary has the resources to employ moderate BlackHat capabilities but will not engage in any attacks where the attack cost will exceed the expected financial gain.}\sidenote[][]{This means that given our measly financial assets, most attackers will not employ national level attack against our password manager just to confirm how poor we really are!}
+These assumptions are pretty straight forward.
+\end{enumerate}
+
 
 \section{Threats}
 \label{sec:threats}
 In this section we identify the threat to each major element of our
 system, usually by using a dataflow diagram.  Use the subsections to
-enumerate and systematically walk through the threats.
-\subsection{Threat Trees}
+enumerate and systematically walk through the threats. We conduct a STRIDE analysis on each major data flow or component using the Microsoft Elevation of Privilege game and personal inspection.\sidenote{The elevation of privilege game can be found at \url{https://www.microsoft.com/en-us/SDL/adopt/eop.aspx}}
+
+\subsection{Spoofing Threats}
+
+\subsection{Tampering Threats}
+
+\subsection{Repudiation Threats}
+
+\subsection{Information Disclosure Threats}
+
+\subsection{Denial Of Service Threats}
+
+\subsection{Elevation of Privilege Threats}
+
+
+\section{Attack Trees}
 We conduct an analysis of each threat using a threat tree.
 
-\subsection{STRIDE Modeling}
-We conduct a STRIDE analysis on each major data flow or component.
-The style does not allow for subsections so we may need to be a little
-creative and just use para
+

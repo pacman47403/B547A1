@@ -48,7 +48,7 @@ updates the device.
 The way to save the password via the password manager is straightforward. The
 password is passed along with the corresponding key (e.g. a website, a username,
 hostname, \dots) to the password manager when the secure user session is
-setup as shown in Figure~\ref{fig:dfd_app} and Figure~\ref{fig:dfd_usb}. The key
+setup as shown in Figures~\ref{fig:dfd_app} and ~\ref{fig:dfd_usb}. The key
 must be unique. Once
 the password is stored with the corresponding key to the encrypted partition in
 the USB, a user can retrieve the password with the unique given key during the
@@ -63,22 +63,22 @@ perferably in an image format.
     \caption{Main System Data Flow Diagram}
     \label{fig:dfd_main}
 \end{figure}
-\begin{figure}
+\begin{figure*}
     \centering
-    \includegraphics{DFD_App}
+    \includegraphics[width=\linewidth]{DFD_App}
     \caption{System Data Flow Diagram in the App side}
     \label{fig:dfd_app}
-\end{figure}
-\begin{figure}
+\end{figure*}
+\begin{figure*}
     \centering
-    \includegraphics{DFD_USB}
+    \includegraphics[width=\linewidth]{DFD_USB}
     \caption{System Data Flow Diagram in the USB side}
     \label{fig:dfd_usb}
-\end{figure}
+\end{figure*}
 
 The major components of the Password manager are:\\  USB device and User Application.
 
-The usb device when pluged in the system is loaded as a CD ROM. The Get/Load
+The usb device when plugged in the system is loaded as a CD ROM. The Get/Load
 function from the application gets the public key and begins the message
 encryption. Once the user application is authenticated and loaded there can be 4
 possibilities:
@@ -93,7 +93,7 @@ When the user uses the iron key for the first time, the header is decrypted with
 the default key. Once the header decrypt is successful the user is forced to
 reset the default password.
 
-When a correct credentials are entered by the user, the password key is sent to
+When correct credentials are entered by the user, the password key is sent to
 the usb which then decrypts the header with that key.  Once the header is
 decrypted a a user session is started. The counter which stores the number of
 invalid attempts is reset.The user has the option to update the user
@@ -102,8 +102,8 @@ password file/header is written to the usb.A pair of key and password is stored
 in the usb device. The password is queried from the USB device using the given
 key.
 
-When the user enters an invalid credentials, the header decrypt fails and the
-counter is incremented. The user is then prompted to enter a correct password.
+When the user enters an invalid credentials, the header decrypt fails and the password
+try counter is incremented.\marginnote{The USB itself does not posses any logging capability save for the try counter which also serves as an initiator to clear the system after a number of incorrect tries.} The user is then prompted to enter a correct password.
 
 When a user enters a wrong password multiple times which is equal to some
 threshold value, the reset counter overwrites the header and password file by
@@ -113,17 +113,21 @@ The user application can be updated. When the update is successful, the USB is
 updated and a force restart happens with the new version.When an update fails
 the current version of the app is maintained.
 
-The system data flow diagram is shown in figure \ref{fig:dfd_main}
+The system data flow diagram is shown in figure \ref{fig:dfd_main}.
 
 
 \section{Functional Requirements}
 \label{sec:funcreq}
-Describe the functions of the system.  In here place swim lane
-diagrams corresponding to each major functional block details in
-\ref{sec:sysdesc}
+The functional requirements of the system are as follows:
+\begin{enumerate}
+    \item{Physically protect the USB against known tamper attacks including physical attacks and USB electrical channel attacks.}\sidenote{We do not enumerate all the possible USB physical and electrical attacks, nor do we describe it detail the mitigations to these attacks.  It is assumed that appropriate hardware antitamper features are incorporated into the USB design.}
+    \item{Host all cryptography on the USB device.}
+    \item{Allow for remote updates of USB software and firmware.}
+    \item{Initiate device wipe after a set number of incorrect login attempts.}
+    \item{Allow for the secure storage and retrieval of user websites and login information.}
+    \item{Provide for a secure, random password generator capability.}
+\end{enumerate}
 
-\section{Security Requirements}
-\label{sec:secreqs}
-Following the example in Shostack~\cite{shostackbook}, we describe the
-security requirements of the system which will inform our threat
-model.
+
+
+

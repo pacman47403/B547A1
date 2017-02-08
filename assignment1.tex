@@ -22,6 +22,9 @@
 % For nicely typeset tabular material
 \usepackage{booktabs}
 
+\usepackage{lscape}
+\usepackage{rotating}
+
 %%
 % For graphics / images
 \usepackage{graphicx}
@@ -57,6 +60,9 @@
 
 %adds a page number to each page
 \fancypagestyle{plain}{}
+
+% allows landscape environment
+\usepackage{lscape}
 
 % Prints an epigraph and speaker in sans serif, all-caps type.
 \newcommand{\openepigraph}[2]{%
@@ -205,85 +211,29 @@ Building secure systems is hard.
 \cleardoublepage
 \input{text/mitigation.tex}
 
+
 \cleardoublepage
 \chapter{Appendix 1: Security Exceptions and Assumptions}
 \label{ch:a1}
+\input{text/SecExcepts.tex}
 
-\begin{table*}[h]
-    \centering
-    \includegraphics[width=\linewidth]{assumption_table_2017-02-03_14-13-43}
-    \caption{Security Assumptions and Exceptions Table}
-    \label{tab:sec_assumpt}
-\end{table*}
 
 
 \cleardoublepage
 \chapter{Appendix 2: Security Bug List}
 \label{ch:a2}
-This assignment used the table shown in Table \ref{tab:bug_table} to catalog and
-record the security bugs found.
+\input{text/SecBugs.tex}
 
-\begin{table*}[h]
-    \centering
-    \includegraphics[width=\linewidth]{bug_table_2017-02-03_14-12-11}
-    \caption{Security Bug Table}
-    \label{tab:bug_table}
-\end{table*}
 
 \cleardoublepage
 \chapter{Appendix 3: Mitigation List}
 \label{ch:a3}
+\input{text/Secmitigation.tex}
 
 \cleardoublepage
 \chapter{Appendix 4: Risk Management Definitions and Methodology}
 \label{ch:a4}
-The risk methodology used in this assignment is taken from the OWASP Risk
-Methodology~\cite{owasprisk} with modifications to the risk matrix.  Wheres
-OWASP uses a 3x3 risk matrix, we chose to implement a 5x5 risk matrix to allow
-for greater granularity of decisions.
-
-
-
-
-
-Risk categories are defined as follows:
-\vfill
-\begin{table}[h]
-    \centering
-    \begin{tabular}{l l l }
-    \hline
-    Risk Category & Definition \\
-    \hline
-    1 & Critical\\
-    2 & High\\
-    3 & Med-High\\
-    4 & Med\\
-    5 & Med-Low\\
-    6 & Low \\
-    \end{tabular}
-    \caption{Risk Category Definitions}
-    \label{tab:risk_cat}
-\end{table}
-
-\begin{marginfigure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{risk_matrix_2017-02-03_15-23-28.png}
-    \caption{Risk Matrix}
-    \label{fig:riskmatrix}
-\end{marginfigure}
-
-By convention, category 1 or 2 risks require immediate attention and management
-while category 5 and 6 risks can most likely be monitored.  The risk categories
-and definitions may be applied to the threat severities in the same manner.
-
-The password manager's risk are summarized using the table in table~\ref{tab:risk}.
-\begin{table}[h]
-    \centering
-    \includegraphics[width=\linewidth]{risk_table_2017-02-03_14-11-08.png}
-    \caption{Risk Table}
-    \label{tab:risk}
-\end{table}
-
+\input{text/risk.tex}
 
 
 
