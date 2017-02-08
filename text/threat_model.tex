@@ -66,22 +66,53 @@ We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need
 \end{table*}
 
 \subsection{Repudiation Threats}
-\begin{marginfigure}%
+\begin{marginfigure}[-0.8 in]%
 \centering
   \includegraphics[width=0.4\linewidth]{repudcard}
   \caption{Repudiation Card from the Elevation of Privilege Game}
   \label{fig:repudcard}
 \end{marginfigure}
 
+We identified 14 potential repudiation threats. \pat{update number after final iteration}  The webserver used to store and present software and firmware updates represents the most significant repudiation attack surface.  Compromise of this element of the password manager can allow an attacker to post tampered software and firmware files which can result in a full compromise of the password manager and its contents.
+\begin{table*}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{repud_sum}
+    \caption{Summary of Repudiation Threats Found in First Threat Iteration}
+    \label{tab:repudsum}
+\end{table*}
+
+
+
 \subsection{Information Disclosure Threats}
-\begin{marginfigure}%
+We discovered several information disclosure threats during our analysis.  Many of these threats where aimed at discovering passwords and keys while one particular threat was aimed at fuzzing the USB to discover any potential leaks caused by incorrect input.  A particular nefarious information disclosure threat was focused on recovering keys from a wiped device that had been transferred to another user. \pat{we need to say a little more about info threats?} 
+
+\begin{table*}[]
+    \centering
+    \includegraphics[width=\linewidth]{info_sum}
+    \caption{Summary of Information Disclosure Threats Found in First Threat Iteration}
+    \label{tab:infosum}
+\end{table*}
+
+\begin{marginfigure}[0.25in]%
 \centering
   \includegraphics[width=0.4\linewidth]{infodisclcard}
   \caption{Information Disclosure Card from the Elevation of Privilege Game}
   \label{fig:spoofcard}
 \end{marginfigure}
 
+
 \subsection{Denial Of Service Threats}
+Denial of service for our password manager occurs when either the device is cleared or no longer in the posession of its owner.  Loss of the USB device represents a considerable denial of service threat because no backup features are provisioned. 
+\begin{table*}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{dos_sum}
+    \caption{Summary of Denial of Service Threats Found in First Threat Iteration}
+    \label{tab:dossum}
+\end{table*}
+
+Loss of control of the USB which results in an attacker possessing the device may allow for the opportunity for other more sophisticated attacks, or quite simply an attack that wipes the deivce because an attacker entered the wrong password too many times.
+
+
 \begin{marginfigure}%
 \centering
   \includegraphics[width=0.4\linewidth]{doscard}
@@ -89,7 +120,9 @@ We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need
   \label{fig:doscard}
 \end{marginfigure}
 
+
 \subsection{Elevation of Privilege Threats}
+
 \begin{marginfigure}%
 \centering
   \includegraphics[width=0.4\linewidth]{eopcard}
