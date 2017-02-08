@@ -6,7 +6,7 @@ Methodology~\cite{owasprisk} with modifications to the risk matrix.\sidenote[4.5
 
 
 
-Risk categories are defined in Table ~\ref{tab:risk_cat}.\\
+Risk categories are defined in table ~\ref{tab:risk_cat}.\\
 
 
 Each accepted threat is given a likelihood score which is based on threat agent and vulnerability factors as well as an impact score which is based on technical impact and business impact.  These two scores are used to enter the risk matrix in figure~\ref{fig:riskmatrix} which will yield a risk category.
@@ -28,6 +28,14 @@ Each accepted threat is given a likelihood score which is based on threat agent 
     \label{tab:risk_cat}
 \end{table}
 
+\begin{table*}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{risk_sum}
+    \caption{Threat Risk Summary Table}
+    \label{tab:risksum}
+\end{table*}
+
+
 \begin{figure*}[]
     \centering
     \includegraphics[width=\linewidth]{risk_matrix}
@@ -36,14 +44,9 @@ Each accepted threat is given a likelihood score which is based on threat agent 
 \end{figure*}
 
 By convention, category 1 or 2 risks require immediate attention and management
-while category 5 and 6 risks can most likely be monitored.The password manager's risk are summarized using the table in table~\ref{tab:risk}.
+while category 5 and 6 risks can most likely be monitored.The password manager's risk are summarized using the table in table~\ref{tab:risksum}.  Detailed information concerning the factors used to asses likelihood and impact for each risk is found in table~\ref{tab:likelihood} and table~\ref{tab:impact}.
 
-\begin{table}
-    \centering
-    \includegraphics[width=\linewidth]{risk_sum}
-    \caption{Threat Risk Summary Table}
-    \label{fig:risksum}
-\end{table}
+
 
 \begin{sidewaystable}[]
     \includegraphics[]{owasp_likelihood}
@@ -56,3 +59,6 @@ while category 5 and 6 risks can most likely be monitored.The password manager's
     \caption{Threat Impact Table}
     \label{tab:impact}
 \end{sidewaystable}
+
+
+
