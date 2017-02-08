@@ -20,6 +20,16 @@ These assumptions are pretty straight forward.
 
 \section{Threats}
 \label{sec:threats}
+
+\subsection{Spoofing Threats}
+
+\begin{marginfigure}%
+\centering
+  \includegraphics[width=0.4\linewidth]{spoofcard}
+  \caption{Spoofing Card from the Elevation of Privilege Game}
+  \label{fig:spoofcard}
+\end{marginfigure}
+
 In this section we identify the threat to each major element of our
 system, usually by using a dataflow diagram.  We conduct a STRIDE analysis on each major data flow or component using the Microsoft Elevation of Privilege game and personal inspection.\sidenote{The elevation of privilege game can be found at \url{https://www.microsoft.com/en-us/SDL/adopt/eop.aspx}}  For each threat we decide whether or not to add it to our risk chart; for similar threats or threats that depend on a similar attack tree we enter only one threat into the risk table but track the remaining threats in the bug table to ensure they are properly managed and mitigated. As we iterated threats, we noted several limitations of the OWASP Risk Management Methodology:
 \begin{enumerate}
@@ -28,16 +38,7 @@ system, usually by using a dataflow diagram.  We conduct a STRIDE analysis on ea
     \item{The business impact categories while useful in a real world exercise were not applicable to this threat model.  In the future we would look at substituting more applicable rubrics in place of the existing business impact factors of the OWASP model.}
 \end{enumerate}
 
-In spite of the limitations we discuss, the OWASP model was very useful in drawing our attention to the highest risk threats.  We benefited from using the 5x5 risk matrix as opposed to the 3x3 OWASP risk matrix because we were able to break out threats and risk to a finer degree.
-
-\subsection{Spoofing Threats}
-\begin{marginfigure}%
-\centering
-  \includegraphics[width=0.33\linewidth]{spoofcard}
-  \caption{Spoofing Card from the Elevation of Privilege Game}
-  \label{fig:spoofcard}
-\end{marginfigure}
-Spoofing threats deal with an attacker's ability to masquerade as an individual, process or some other entity in order to gain access to data and systems.  During our first iteration we identified several spoofing threats.
+In spite of the limitations we discuss, the OWASP model was very useful in drawing our attention to the highest risk threats.  We benefited from using the 5x5 risk matrix as opposed to the 3x3 OWASP risk matrix because we were able to break out threats and risk to a finer degree. Spoofing threats deal with an attacker's ability to masquerade as an individual, process or some other entity in order to gain access to data and systems.  During our first iteration we identified several spoofing threats.
 
 \begin{table*}[ht]
     \centering
@@ -56,9 +57,16 @@ We identified 5 threats and adjudicated them. Each threat received a bug id whet
   \label{fig:tampercardcard}
 \end{marginfigure}
 
+\begin{marginfigure}%
+\centering
+  \includegraphics[width=0.4\linewidth]{repudcard}
+  \caption{Repudiation Card from the Elevation of Privilege Game}
+  \label{fig:repudcard}
+\end{marginfigure}
+
 We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need to update these summaries after our threat modeling is complete} Threat ID 004, ``Malware Infested Update'' is a significant threat and represents a category of several different threats which are intended to compromise the USB device by delivering malware which can alter the reset counter, keys, and data within the USB device. \pat{should we do an attack tree for this and associated threats?} Our tampering threats and potential mitigations are depicted in table~\ref{tab:tampersum}.
 
-\begin{table*}[ht]
+\begin{table*}[]
     \centering
     \includegraphics[width=\linewidth]{tamper_sum}
     \caption{Summary of Tampering Threats Found in First Threat Iteration}
@@ -66,15 +74,10 @@ We identified 8 tampering threats and accepted 4 into the risk tables. \pat{need
 \end{table*}
 
 \subsection{Repudiation Threats}
-\begin{marginfigure}[-0.8 in]%
-\centering
-  \includegraphics[width=0.4\linewidth]{repudcard}
-  \caption{Repudiation Card from the Elevation of Privilege Game}
-  \label{fig:repudcard}
-\end{marginfigure}
+
 
 We identified 14 potential repudiation threats. \pat{update number after final iteration}  The webserver used to store and present software and firmware updates represents the most significant repudiation attack surface.  Compromise of this element of the password manager can allow an attacker to post tampered software and firmware files which can result in a full compromise of the password manager and its contents.
-\begin{table*}[ht]
+\begin{table*}[]
     \centering
     \includegraphics[width=\linewidth]{repud_sum}
     \caption{Summary of Repudiation Threats Found in First Threat Iteration}
@@ -113,15 +116,17 @@ Denial of service for our password manager occurs when either the device is clea
 Loss of control of the USB which results in an attacker possessing the device may allow for the opportunity for other more sophisticated attacks, or quite simply an attack that wipes the deivce because an attacker entered the wrong password too many times.
 
 
+
+
+
+\subsection{Elevation of Privilege Threats}
+
 \begin{marginfigure}%
 \centering
   \includegraphics[width=0.4\linewidth]{doscard}
   \caption{Denial of Service Card from the Elevation of Privilege Game}
   \label{fig:doscard}
 \end{marginfigure}
-
-
-\subsection{Elevation of Privilege Threats}
 
 \begin{marginfigure}%
 \centering
