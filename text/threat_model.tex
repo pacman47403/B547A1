@@ -39,16 +39,13 @@ In spite of the limitations we discuss, the OWASP model was very useful in drawi
 \end{marginfigure}
 Spoofing threats deal with an attacker's ability to masquerade as an individual, process or some other entity in order to gain access to data and systems.  During our first iteration we identified several spoofing threats.
 
-\begin{table}[]
+\begin{table*}[ht]
     \centering
-    \begin{tabular}{c|c}
-         &  \\
-         & 
-    \end{tabular}
-    \caption{Caption}
-    \label{tab:my_label}
-\end{table}
-
+    \includegraphics[width=\linewidth]{spoof_sum}
+    \caption{Summary of Spoofing Threats Found in First Threat Iteration}
+    \label{tab:spoofsum}
+\end{table*}
+We identified 5 threats and adjudicated them. Each threat received a bug id whether or not they were entered into the risk tables.  Threats that were similar to other evaluated threats were not accepted into the risk table as noted. Several spoofing threats were elements in a multi-type threat such as spoofing resulting in information disclosure. When possible, we identified potential mitigations for each threat whih inform the bug list which is where the majority of system development is drawn.
 
 \subsection{Tampering Threats}
 \begin{marginfigure}%
