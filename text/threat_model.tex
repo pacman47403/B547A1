@@ -9,7 +9,7 @@ potential threats using the STRIDE methodoly augmented by the elevation of
 privilege game cards shown in figure~\ref{fig:spoofcard} through
 figure~\ref{fig:eopcard}.}
     \item{As a group, discuss any identified threats and gain concurrence and
-understanding on the threat.}
+understanding of the threat.}
     \item{Assign a bug number to the threat.}
     \item{Decide whether or not to accept this threat as a system risk.  Note
 this step is intended to \emph{group} like threats and to allow for a more
@@ -220,6 +220,20 @@ password too many times.
 
 
 \subsection{Elevation of Privilege Threats}
+We identified two elevation of privilege threats, one associated with fuzzing the USB to discovery entry points and another attack that interrupts the device reset procedure which retains the old password during a device reset.  Elevation of privilege threat are summarized in table~\ref{tab:eopsum}.
+
+
+\begin{table*}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{eop_sum}
+    \caption{Summary of Elevation of Privilege Threats Found in First Threat Iteration}
+    \label{tab:eopsum}
+\end{table*}
+
+
+
+\section{Threat Summary by Highest Risk}
+Following the  OWASP risk mitigation methodology, we accepted XX \pat{put final number in here} risks.  The full risks, risk tables and methodologies are summarized in appendix 4. We identified 8 category 2 (\emph{\textbf{high risk}}) threats which represents a significant majority of our risks.  A significant portion of these threats were associated with compromise of of the password (impact: 9) despite relatively low likelihood scores.  A summary of our threats and their risk categories can be found in appendix 4, table~\ref{tab:risksum}.
 
 \begin{marginfigure}%
 \centering
@@ -228,21 +242,15 @@ password too many times.
   \label{fig:doscard}
 \end{marginfigure}
 
+
+\section{Attack Trees}
+Several threats were enabled by a similar attack vector.  For example, we identified multiple threats associated with compromised software and firmware updates.  Given the strong identification of multiple threats using this vector, we examined this attack vector using an attack tree.
+
+\pat{I think we need at least one attack tree here that pulls our threats and the compromised, malware infested update}
+
 \begin{marginfigure}%
 \centering
   \includegraphics[width=0.4\linewidth]{eopcard}
   \caption{Elevation of Privilege Card from the Elevation of Privilege Game}
   \label{fig:eopcard}
 \end{marginfigure}
-
-
-\section{Threat Summary by Highest Risk}
-
-\subsection{Risk Table}
-
-\subsection{Risk Matrix}
-
-\section{Attack Trees}
-We conduct an analysis of each threat using a threat tree.
-
-\section{Highest Risks and Their Mitigations}
