@@ -149,6 +149,9 @@
 \newcommand{\docfilehook}[2]{\texttt{#1}\index{file hooks!#2}\index{#1@\texttt{#1}}}
 \newcommand{\doccounter}[1]{\texttt{#1}\index{#1 counter@\texttt{#1} counter}}
 
+\usepackage{enumitem}
+\setlistdepth{9}
+
 % Generates the index
 \usepackage{makeidx}
 \makeindex
@@ -234,6 +237,8 @@ Building secure systems is hard.
 \chapter{Appendix 4: Risk Management Definitions and Methodology}
 \label{ch:a4}
 \input{text/risk.tex}
+\clearpage
+\input{text/attack_tree.tex}
 
 
 
