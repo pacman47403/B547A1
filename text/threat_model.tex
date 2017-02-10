@@ -233,7 +233,13 @@ We identified two elevation of privilege threats, one associated with fuzzing th
 
 
 \section{Threat Summary by Highest Risk}
-Following the  OWASP risk mitigation methodology, we accepted XX \pat{put final number in here} risks.  The full risks, risk tables and methodologies are summarized in appendix 4. We identified 8 category 2 (\emph{\textbf{high risk}}) threats which represents a significant majority of our risks.  A significant portion of these threats were associated with compromise of of the password (impact: 9) despite relatively low likelihood scores.  A summary of our threats and their risk categories can be found in appendix 4, table~\ref{tab:risksum}.
+Following the OWASP risk mitigation methodology, we accepted XX \pat{put final
+number in here} risks.  The full risks, risk tables and methodologies are
+summarized in appendix 4. We identified 8 category 2 (\emph{\textbf{high risk}})
+threats which represents a significant majority of our risks.  A significant
+portion of these threats were associated with compromise of of the password
+(impact: 9) despite relatively low likelihood scores.  A summary of our threats
+and their risk categories can be found in appendix 4, table~\ref{tab:risksum}.
 
 \begin{marginfigure}%
 \centering
@@ -244,9 +250,18 @@ Following the  OWASP risk mitigation methodology, we accepted XX \pat{put final 
 
 
 \section{Attack Trees}
-Several threats were enabled by a similar attack vector.  For example, we identified multiple threats associated with compromised software and firmware updates.  Given the strong identification of multiple threats using this vector, we examined this attack vector using an attack tree.
+Several threats were enabled by a similar attack vector.  For example, we
+identified multiple threats associated with compromised software and firmware
+updates.  Given the strong identification of multiple threats using this vector,
+we examined this attack vector using an attack tree.
 
-\pat{I think we need at least one attack tree here that pulls our threats and the compromised, malware infested update}
+The attack tree that we have come up with as a good example is compromise the
+update of application in the target USB device. The USB device needs to update
+its application/software as new features are added and security patches are
+required from time to time. Attackers can apply the Man In The Middle (MITM)
+attack to the access between the USB device and the web server. The web server
+is hosted to provide the new release of the applications. The detailed processes
+of this threat is decribed in the Chapter~\ref{ch:a4}.
 
 \begin{marginfigure}%
 \centering
