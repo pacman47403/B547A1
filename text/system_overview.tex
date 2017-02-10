@@ -2,7 +2,7 @@
 \label{ch:System Overview}
 The system modeled is a web-enabled password manager that resides on a
 tamper resistant USB thumb drive, modeled after the
-IronKey\texttrademark secure USB thumb drive. The password manager
+IronKey\texttrademark~secure USB thumb drive. The password manager
 allows for a user to enjoy the benefits of a secure offline password
 manager with the option of receiving software and firmware updates from the
 cloud. The USB device also hosts an embedded crypto system which can be
@@ -69,11 +69,27 @@ preferably in an image format.
     \caption{System Data Flow Diagram in the App side}
     \label{fig:dfd_app}
 \end{figure*}
+
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{DFD_USB}
     \caption{System Data Flow Diagram in the USB side}
     \label{fig:dfd_usb}
+\end{figure*}
+
+%\begin{figure*}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{webservdfd1}
+%    \caption{System Data Flow Diagram for the Webserver}
+%    \label{fig:wsdfd1}
+%\end{figure*}
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.8\linewidth]{DFD_Webserver}
+    \caption{System Data Flow Diagram for the Webserverer}
+    \label{fig:wsdfd}
 \end{figure*}
 
 The Password manager consists of two major components, the USB device and a User

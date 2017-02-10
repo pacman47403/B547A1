@@ -23,8 +23,8 @@
 \usepackage{booktabs}
 
 \usepackage{lscape}
-\usepackage{rotating}
-
+% \usepackage{rotating}
+\usepackage[figuresright]{rotating}
 %%
 % For graphics / images
 \usepackage{graphicx}
@@ -214,6 +214,9 @@ Building secure systems is hard.
 \cleardoublepage
 \input{text/mitigation.tex}
 
+\cleardoublepage
+\input{text/conclusion.tex}
+
 
 \cleardoublepage
 \chapter{Appendix 1: Security Exceptions and Assumptions}
@@ -223,21 +226,22 @@ Building secure systems is hard.
 
 
 \cleardoublepage
-\chapter{Appendix 2: Security Bug List}
-\label{ch:a2}
-\input{text/SecBugs.tex}
+\input{text/threat_list.tex}
 
+
+%\cleardoublepage
+%\chapter{Appendix 3: Mitigation List}
+%\label{ch:a3}
+%\input{text/Secmitigation.tex}
 
 \cleardoublepage
-\chapter{Appendix 3: Mitigation List}
+\chapter{Appendix 3: Risk Management Definitions and Methodology}
 \label{ch:a3}
-\input{text/Secmitigation.tex}
+\input{text/risk.tex}
 
 \cleardoublepage
-\chapter{Appendix 4: Risk Management Definitions and Methodology}
+\chapter{Appendix 4: Attack Tree for Webserver Hosting Software/Firmware Updates}
 \label{ch:a4}
-\input{text/risk.tex}
-\clearpage
 \input{text/attack_tree.tex}
 
 
