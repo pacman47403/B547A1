@@ -131,10 +131,10 @@ When the user uses the iron key for the first time, the header is decrypted with
 the default key. Once the header decrypt is successful the user is forced to
 reset the default password. When correct credentials are entered by the user,
 the password key is sent to the USB which then decrypts the header with that
-key.  Once the header is decrypted a a user session is started. The counter
+key.  Once the header is decrypted a user session is started. The counter
 which stores the number of invalid attempts is reset.The user has the option to
 update the user password. The decrypted file is read into the memory and a new
-password key and password file/header is written to the USB.A pair of key and
+password key and password file/header is written to the USB. A pair of key and
 password is stored in the USB device. The password is queried from the USB
 device using the given key.
 
@@ -147,7 +147,7 @@ multiple times which is equal to some threshold value, the reset counter
 overwrites the header and password file by default.
 
 The user application can be updated. When the update is successful, the USB is
-updated and a force restart happens with the new version.When an update fails
+updated and a force restart happens with the new version. When an update fails
 the current version of the app is maintained.
 
 The system data flow diagram is shown in figure \ref{fig:dfd_main}.
