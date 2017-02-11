@@ -150,8 +150,28 @@ The user application can be updated. When the update is successful, the USB is
 updated and a force restart happens with the new version. When an update fails
 the current version of the app is maintained.
 
-The system data flow diagram is shown in figure \ref{fig:dfd_main}.
+The system data flow diagram is shown in figure \ref{fig:dfd_main}. Swim lane diagrams for several key processes are shown in figures~\ref{fig:dfd_secapp},~\ref{fig:dfd_secureuser}, and~\ref{fig:dfd_unsecure}.
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.8\linewidth]{DFD_SecureApp}
+    \caption{Swim Lane Diagrams for Device Reset, Start User Session (Secure) and Software Update}
+    \label{fig:dfd_secapp}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.8\linewidth]{DFD_SecureUser}
+    \caption{Swim Lane Diagrams for Password and File Store Operations}
+    \label{fig:dfd_secureuser}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{DFD_Unsecure}
+    \caption{Swim Lane Diagram for Start User Session (Unsecure)}
+    \label{fig:dfd_unsecure}
+\end{figure}
 
 \section{Functional Requirements}
 \label{sec:funcreq}
