@@ -6,7 +6,7 @@
 
 HEADER = assignment1
 PICS = graphics
-#BIB = bib
+BIB = bib
 TEX = text
 NEW_CITES = yis
 
@@ -15,7 +15,7 @@ TARGETS: $(HEADER).pdf
 .PHONY: all clean templates
 
 tex_files = $(shell find $(TEX) -name '*.tex' -print)
-#bib_files = $(shell find $(BIB) -name '*.bib' -print)
+bib_files = $(shell find $(BIB) -name '*.bib' -print)
 pic_files = $(shell find $(PICS) \
 		\( -name '*.eps' -print \) -or \( -name '*.epsi' -print \) \
 		-or \( -name '*.ps' -print \) -or \( -name '*.png' -print \) \
@@ -32,16 +32,14 @@ pic_files = $(shell find $(PICS) \
 # 	wget https://iu.box.com/shared/static/77cepprihpext37ot2kjprbobm76gxb1.eps -O $(PICS)/Lab02_part3_jodstein.eps; \
 #     fi \
 # 	)
-$(HEADER).pdf: $(HEADER).tex $(tex_files) $(pic_files) #$(bib_files)
+$(HEADER).pdf: $(HEADER).tex $(tex_files) $(pic_files) $(bib_files)
 	@if test "`which rubber`" != "" ; then \
 		rubber -Wall -d $(HEADER) ; \
 	else \
 		pdflatex $(HEADER) | tee latex.out ; \
-		if grep -q '^LaTeX Warning: Citation.*undefined' latex.out; then \
 			bibtex $(HEADER); \
 			bibtex $(NEW_CITES); \
 			touch .rebuild; \
-		fi ; \
 		while [ -f .rebuild -o \
 			-n "`grep '^LaTeX Warning:.*Rerun' latex.out`" ]; do \
 			rm -f .rebuild; \
